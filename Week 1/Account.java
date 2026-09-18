@@ -17,17 +17,25 @@ class BankAccount {
 
     // Deposit
     void deposit(double amount) {
+        if (amount <= 0) {
+            System.out.println("Amount must be positive!");
+            return;
+        }
         balance = balance + amount;
         System.out.println("Amount Deposited: " + amount);
+        checkBalance();
     }
 
     // Withdraw
     void withdraw(double amount) {
-        if (amount > balance) {
+        if (amount <= 0) {
+            System.out.println("Amount must be positive!");
+        } else if (amount > balance) {
             System.out.println("Insufficient Funds!");
         } else {
             balance = balance - amount;
             System.out.println("Amount Withdrawn: " + amount);
+            checkBalance();
         }
     }
 
@@ -91,11 +99,14 @@ public class Account {
                     System.out.print("Enter Amount: ");
                     amount = sc.nextDouble();
 
+                    boolean depositFound = false;
                     for (int i = 0; i < acc.length; i++) {
                         if (acc[i].accountNumber == accNo) {
                             acc[i].deposit(amount);
+                            depositFound = true;
                         }
                     }
+                    if (!depositFound) System.out.println("Account not found!");
                     break;
 
                 case 3:
@@ -104,22 +115,28 @@ public class Account {
                     System.out.print("Enter Amount: ");
                     amount = sc.nextDouble();
 
+                    boolean withdrawFound = false;
                     for (int i = 0; i < acc.length; i++) {
                         if (acc[i].accountNumber == accNo) {
                             acc[i].withdraw(amount);
+                            withdrawFound = true;
                         }
                     }
+                    if (!withdrawFound) System.out.println("Account not found!");
                     break;
 
                 case 4:
                     System.out.print("Enter Account Number: ");
                     accNo = sc.nextInt();
 
+                    boolean balanceFound = false;
                     for (int i = 0; i < acc.length; i++) {
                         if (acc[i].accountNumber == accNo) {
                             acc[i].checkBalance();
+                            balanceFound = true;
                         }
                     }
+                    if (!balanceFound) System.out.println("Account not found!");
                     break;
 
                 case 5:
@@ -128,12 +145,15 @@ public class Account {
                     System.out.print("Enter Interest Rate: ");
                     rate = sc.nextFloat();
 
+                    boolean interestFound = false;
                     for (int i = 0; i < acc.length; i++) {
                         if (acc[i].accountNumber == accNo) {
                             double interest = acc[i].calculateInterest(rate);
                             System.out.println("Interest: " + interest);
+                            interestFound = true;
                         }
                     }
+                    if (!interestFound) System.out.println("Account not found!");
                     break;
 
                 case 6:

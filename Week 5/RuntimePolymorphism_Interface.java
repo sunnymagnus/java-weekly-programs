@@ -13,6 +13,10 @@ class UPIPayment implements Payment {
         this.balance=balance;
     }
     public void pay(double amount) {
+        if (amount <= 0) {
+            System.out.println("Payment amount must be positive.");
+            return;
+        }
         Scanner sc=new Scanner(System.in);
         System.out.print("Enter UPI PIN: ");
         int enteredPin=sc.nextInt();
@@ -26,6 +30,10 @@ class UPIPayment implements Payment {
         else System.out.println("UPI Payment Failed: Incorrect PIN.");
     }
     public void refund(double amount) {
+        if (amount <= 0) {
+            System.out.println("Refund amount must be positive.");
+            return;
+        }
         balance+=amount;
         System.out.println("UPI Refund Successful. Updated Balance: "+balance);
     }
@@ -36,6 +44,10 @@ class CardPayment implements Payment {
         this.limit=limit;
     }
     public void pay(double amount) {
+        if (amount <= 0) {
+            System.out.println("Payment amount must be positive.");
+            return;
+        }
         if(limit>=amount) {
             limit-=amount;
             System.out.println("Card Payment Successful. Remaining Limit: "+limit);
@@ -43,6 +55,10 @@ class CardPayment implements Payment {
         else System.out.println("Card Payment Failed: Limit Exceeded.");
     }
     public void refund(double amount) {
+        if (amount <= 0) {
+            System.out.println("Refund amount must be positive.");
+            return;
+        }
         limit+=amount;
         System.out.println("Card Refund Successful. Updated Limit: "+limit);
     }
@@ -53,6 +69,10 @@ class WalletPayment implements Payment {
         walletBalance=balance;
     }
     public void pay(double amount) {
+        if (amount <= 0) {
+            System.out.println("Payment amount must be positive.");
+            return;
+        }
         if(walletBalance>=amount) {
             walletBalance-=amount;
             System.out.println("Wallet Payment Successful. Remaining Balance: "+walletBalance);
@@ -60,6 +80,10 @@ class WalletPayment implements Payment {
         else System.out.println("Wallet Payment Failed: Insufficient Balance.");
     }
     public void refund(double amount) {
+        if (amount <= 0) {
+            System.out.println("Refund amount must be positive.");
+            return;
+        }
         walletBalance+=amount;
         System.out.println("Wallet Refund Successful. Updated Balance: "+walletBalance);
     }

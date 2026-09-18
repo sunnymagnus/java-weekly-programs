@@ -49,12 +49,17 @@ class Book {
 
     // Match Method
     boolean matches(String keyword) {
-        return title.equalsIgnoreCase(keyword) ||
-               author.equalsIgnoreCase(keyword);
+        String searchText = keyword.toLowerCase();
+        return title.toLowerCase().contains(searchText) ||
+               author.toLowerCase().contains(searchText);
     }
 
     // Apply Discount
     void applyDiscount(double percentage) {
+        if (percentage < 0 || percentage > 100) {
+            System.out.println("Discount must be between 0 and 100.");
+            return;
+        }
         price = price - (price * percentage / 100);
     }
 }
@@ -78,7 +83,7 @@ public class Array {
 
         // Search
         System.out.print("Enter title/author to search: ");
-        String key = sc.next();
+        String key = sc.nextLine();
 
         System.out.println("Search Results:");
         for (int i = 0; i < 3; i++) {

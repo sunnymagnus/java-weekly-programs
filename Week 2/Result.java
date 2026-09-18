@@ -20,6 +20,10 @@ class Student {
         for (int i = 0; i < marks.length; i++) {
             System.out.print("Enter mark " + (i + 1) + ": ");
             marks[i] = sc.nextInt();
+            while (marks[i] < 0 || marks[i] > 100) {
+                System.out.print("Enter a mark from 0 to 100: ");
+                marks[i] = sc.nextInt();
+            }
         }
     }
 
@@ -74,6 +78,10 @@ public class Result {
 
             System.out.print("Enter number of subjects: ");
             int n = sc.nextInt();
+            while (n <= 0) {
+                System.out.print("Enter a positive number of subjects: ");
+                n = sc.nextInt();
+            }
 
             s[i] = new Student(roll, name, n);
             s[i].inputMarks(sc);

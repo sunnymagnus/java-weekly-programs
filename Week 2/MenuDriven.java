@@ -74,6 +74,15 @@ public class MenuDriven {
                         id = sc.nextInt();
                         sc.nextLine();
 
+                        boolean duplicate = false;
+                        for (int i = 0; i < count; i++) {
+                            if (p[i].patientId == id) duplicate = true;
+                        }
+                        if (duplicate) {
+                            System.out.println("Patient ID already exists!");
+                            break;
+                        }
+
                         System.out.print("Enter Name: ");
                         name = sc.nextLine();
 
@@ -90,6 +99,11 @@ public class MenuDriven {
                         System.out.print("Enter Fee Paid: ");
                         fee = sc.nextDouble();
 
+                        if (fee < 0) {
+                            System.out.println("Fee cannot be negative!");
+                            break;
+                        }
+
                         p[count] = new Patient(id, name, age, problem, doctor, fee);
                         count++;
 
@@ -104,13 +118,16 @@ public class MenuDriven {
                     id = sc.nextInt();
                     sc.nextLine();
 
+                    boolean doctorFound = false;
                     for (int i = 0; i < count; i++) {
                         if (p[i].patientId == id) {
                             System.out.print("Enter New Doctor: ");
                             doctor = sc.nextLine();
                             p[i].updateDoctor(doctor);
+                            doctorFound = true;
                         }
                     }
+                    if (!doctorFound) System.out.println("Patient not found!");
                     break;
 
                 case 3:
@@ -120,11 +137,19 @@ public class MenuDriven {
                     System.out.print("Enter Fee Amount: ");
                     fee = sc.nextDouble();
 
+                    if (fee < 0) {
+                        System.out.println("Fee cannot be negative!");
+                        break;
+                    }
+
+                    boolean feeFound = false;
                     for (int i = 0; i < count; i++) {
                         if (p[i].patientId == id) {
                             p[i].addFee(fee);
+                            feeFound = true;
                         }
                     }
+                    if (!feeFound) System.out.println("Patient not found!");
                     break;
 
                 case 4:

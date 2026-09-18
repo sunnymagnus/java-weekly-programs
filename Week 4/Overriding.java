@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Employee {
     int id;
     String name;
@@ -53,9 +55,16 @@ public class Overriding {
         Manager m=new Manager(1,"yeshe",60000,5000);
         Developer d=new Developer(2,"khushi",50000,3000);
         Intern i=new Intern(3,"Ram",15000);
-        int days=25;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter days present: ");
+        int days=sc.nextInt();
+        while (days < 0 || days > 30) {
+            System.out.print("Enter days from 0 to 30: ");
+            days=sc.nextInt();
+        }
         m.displayPaySlip(days,m.calculateSalary(days));
         d.displayPaySlip(days,d.calculateSalary(days));
         i.displayPaySlip(days,i.calculateSalary(days));
+        sc.close();
     }
 }

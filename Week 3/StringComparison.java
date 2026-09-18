@@ -17,8 +17,7 @@ class ATMPinChecker {
     }
 
     // Authenticate method (3 attempts)
-    void authenticate() {
-        Scanner sc = new Scanner(System.in);
+    void authenticate(Scanner sc) {
         int attempts = 0;
 
         while (attempts < 3) {
@@ -45,6 +44,8 @@ public class StringComparison{
         ATMPinChecker user = new ATMPinChecker("User1", "1234");
 
         // Start authentication
-        user.authenticate();
+        Scanner sc = new Scanner(System.in);
+        user.authenticate(sc);
+        sc.close();
     }
 }
