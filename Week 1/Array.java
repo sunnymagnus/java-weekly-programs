@@ -15,7 +15,7 @@ class Book {
     void applyDiscount(double percentage) { price -= price * percentage / 100; }
 }
 
-public class Program1 {
+public class Array {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Book[] books = { new Book("Java", "James", "Sun", 1995, "111", 500), new Book("Python", "Guido", "PythonOrg", 2000, "222", 400), new Book("C", "Dennis", "PHI", 1980, "333", 300) };

@@ -4,7 +4,7 @@ class Patient { int patientId, age; String name, problem, doctorAssigned; double
     void displayReport() { System.out.printf("Patient ID: %d%nName: %s%nAge: %d%nProblem: %s%nDoctor: %s%nFee Paid: %.2f%n--------------------------%n", patientId,name,age,problem,doctorAssigned,feePaid); }
     void updateDoctor(String doctor) { doctorAssigned=doctor; System.out.println("Doctor Updated!"); } void addFee(double amount) { feePaid+=amount; System.out.println("Fee Added: " + amount); }
 }
-public class Program3 { static Patient find(Patient[] patients,int count,int id){for(int i=0;i<count;i++)if(patients[i].patientId==id)return patients[i];return null;}
+public class MenuDriven { static Patient find(Patient[] patients,int count,int id){for(int i=0;i<count;i++)if(patients[i].patientId==id)return patients[i];return null;}
     public static void main(String[] args){ Scanner sc=new Scanner(System.in); Patient[] patients=new Patient[5];int count=0,choice;
         do {System.out.println("\n--- Hospital Menu ---\n1. Register Patient\n2. Update Doctor\n3. Add Fee\n4. Display Patients\n5. Exit");System.out.print("Enter choice: ");choice=sc.nextInt();sc.nextLine();
             if(choice==1){if(count==5){System.out.println("Patient List Full!");continue;}System.out.print("Enter ID: ");int id=sc.nextInt();sc.nextLine();System.out.print("Enter Name: ");String name=sc.nextLine();System.out.print("Enter Age: ");int age=sc.nextInt();sc.nextLine();System.out.print("Enter Problem: ");String problem=sc.nextLine();System.out.print("Enter Doctor: ");String doctor=sc.nextLine();System.out.print("Enter Fee Paid: ");double fee=sc.nextDouble();sc.nextLine();patients[count++]=new Patient(id,name,age,problem,doctor,fee);System.out.println("Patient Registered!");}

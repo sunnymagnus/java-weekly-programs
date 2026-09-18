@@ -10,7 +10,7 @@ class BankAccount {
     void display() { System.out.printf("Name: %s%nAccount No: %d%nType: %s%nBalance: %.2f%n------------------------%n", accountHolder, accountNumber, accountType, balance); }
 }
 
-public class Program2 {
+public class Account {
     static BankAccount find(BankAccount[] accounts, int number) { for (BankAccount a : accounts) if (a.accountNumber == number) return a; return null; }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in); BankAccount[] accounts = {new BankAccount("Ravi", 101, 1000, "Saving"), new BankAccount("Sita", 102, 2000, "Current")}; int choice;
