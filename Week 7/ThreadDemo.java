@@ -4,26 +4,26 @@ class EvenThread extends Thread {
             System.out.println("Thread-A (Even): " + i);
             try {
                 Thread.sleep(500);
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e) {
                 System.out.println(e);
             }
         }
     }
 }
-
 class OddThread extends Thread {
     public void run() {
         for (int i = 1; i <= 9; i += 2) {
             System.out.println("Thread-B (Odd): " + i);
             try {
                 Thread.sleep(500);
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e) {
                 System.out.println(e);
             }
         }
     }
 }
-
 public class ThreadDemo {
     public static void main(String[] args) {
         EvenThread t1 = new EvenThread();
