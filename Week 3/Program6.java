@@ -1,0 +1,3 @@
+import java.util.Scanner;
+class ATMPinChecker {String username,pinStored;ATMPinChecker(String username,String pin){this.username=username;pinStored=pin;}boolean verifyPIN(String enteredPIN){return pinStored.equals(enteredPIN);}void authenticate(Scanner sc){for(int attempts=0;attempts<3;attempts++){System.out.print("Enter PIN: ");if(verifyPIN(sc.nextLine())){System.out.println("PIN ENTERED CORRECT");return;}System.out.println("Wrong PIN");}System.out.println("ACCOUNT LOCKED");}}
+public class Program6 {public static void main(String[] args){Scanner sc=new Scanner(System.in);new ATMPinChecker("User1","1234").authenticate(sc);sc.close();}}
